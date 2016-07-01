@@ -6,11 +6,11 @@ class Date
     business_dates_until(to_date, inclusive).size
   end
 
-  def business_dates_until(to_date.strftime('%m/%d/%Y'), inclusive = false)
+  def business_dates_until(to_date, inclusive = false)
     if inclusive
-      (self..to_date.strftime('%m/%d/%Y')).select(&:workday?)
+      (self..to_date).select(&:workday?).strftime('%m/%d/%Y')
     else
-      (self...to_date..strftime('%m/%d/%Y')).select(&:workday?)
+      (self...to_date..select(&:workday?).strftime('%m/%d/%Y')
     end
   end
 end
