@@ -8,9 +8,9 @@ class Date
 
   def business_dates_until(to_date, inclusive = false)
     if inclusive
-      (self..to_date).select(&:workday?)
+      (self..to_date.strftime('%m/%d/%Y')).select(&:workday?)
     else
-      (self...to_date).select(&:workday?)
+      (self...to_date..strftime('%m/%d/%Y')).select(&:workday?)
     end
   end
 end
